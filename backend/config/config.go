@@ -160,8 +160,31 @@ func LoadConfig(configPath string) (*Config, error) {
 		config.Frontend.URL = "http://localhost:3000" // this is a default dev url
 	}
 
+	// OAuth credentials are intentionally not stored in the config files.
+	// They are provided through environment variables so real secrets never
+	// live in the repository.
+	applyOAuthEnvOverrides(&config)
+
 	AppConfig = &config
 	return &config, nil
+}
+
+// applyOAuthEnvOverrides fills OAuth client credentials from environment
+// variables, overriding whatever is in the config file (which should be empty
+// or placeholder values).
+func applyOAuthEnvOverrides(c *Config) {
+	if id := os.Getenv("GOOGLE_CLIENT_ID"); id != "" {
+		c.OAuth.Google.ClientID = id
+	}
+	if secret := os.Getenv("GOOGLE_CLIENT_SECRET"); secret != "" {
+		c.OAuth.Google.ClientSecret = secret
+	}
+	if id := os.Getenv("GITHUB_CLIENT_ID"); id != "" {
+		c.OAuth.Github.ClientID = id
+	}
+	if secret := os.Getenv("GITHUB_CLIENT_SECRET"); secret != "" {
+		c.OAuth.Github.ClientSecret = secret
+	}
 }
 
 func GetConfig() *Config {

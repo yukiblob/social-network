@@ -20,6 +20,7 @@ tmp/build-errors.log
 
 # Environment
 .env
+backend/.env
 
 # Dependencies
 frontend/node_modules/

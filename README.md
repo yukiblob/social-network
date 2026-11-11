@@ -271,6 +271,10 @@ Caddy terminates TLS and routes `/api/*` to the backend and everything else to t
 |----------|---------|-------------|
 | `NEXT_PUBLIC_API_URL` | `http://localhost:8080` | API base URL (frontend) |
 | `REDIS_ADDR` | `localhost:6379` | Redis address (backend, required) |
+| `GOOGLE_CLIENT_ID` | — | Google OAuth client ID (backend) |
+| `GOOGLE_CLIENT_SECRET` | — | Google OAuth client secret (backend) |
+| `GITHUB_CLIENT_ID` | — | GitHub OAuth client ID (backend) |
+| `GITHUB_CLIENT_SECRET` | — | GitHub OAuth client secret (backend) |
 
 ### Configuration
 
@@ -281,7 +285,7 @@ Settings live in `backend/configs.json` (local) / `backend/configs.docker.json` 
 - `redis` — address, pool size, timeouts, retries.
 - `database_configuration` — path, WAL pragmas, `use_cache` (read-through caching), session cleanup interval, and validation `limits` (username/password/name/bio/title/description/post/comment/message/group-title lengths, `rows_limit` pagination cap).
 - `handlers` — image constraints and per-path `rate_limits`.
-- `oauth` — Google/GitHub provider credentials (`client_id`, `client_secret`, scopes, endpoints, redirect URIs).
+- `oauth` — Google/GitHub provider endpoints, scopes, and redirect URIs. The `client_id` / `client_secret` fields are left empty in the repository and are supplied at runtime through environment variables (`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`).
 
 ### Seed Data
 

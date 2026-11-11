@@ -141,8 +141,8 @@
     },
     "oauth": {
         "google": {
-            "client_id": "REDACTED_GOOGLE_CLIENT_ID",
-            "client_secret": "REDACTED_GOOGLE_CLIENT_SECRET",
+            "client_id": "",
+            "client_secret": "",
             "scopes": ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"],
             "auth_url": "https://accounts.google.com/o/oauth2/v2/auth",
             "token_url": "https://oauth2.googleapis.com/token",
@@ -150,8 +150,8 @@
             "redirect_uri": "http://localhost:8080/api/auth/google/callback"
         },
         "github": {
-            "client_id": "REDACTED_GITHUB_CLIENT_ID",
-            "client_secret": "REDACTED_GITHUB_CLIENT_SECRET",
+            "client_id": "",
+            "client_secret": "",
             "scopes": ["read:user", "user:email"],
             "auth_url": "https://github.com/login/oauth/authorize",
             "token_url": "https://github.com/login/oauth/access_token",
